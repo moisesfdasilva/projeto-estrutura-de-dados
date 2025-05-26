@@ -2,11 +2,12 @@
 
 void boobleSort(int array[], int len) {
   int i, j, sub;
-  for(i = 0; i < len; i++){
-    for(j = 1; j < (len - i); j++){
-      if(array[j-1] > array[j]){
-        sub = array[j-1];
-        array[j-1] = array[j];
+
+  for(i = 0; i < len; i++) {
+    for(j = 1; j < (len - i); j++) {
+      if(array[j - 1] > array[j]) {
+        sub = array[j - 1];
+        array[j - 1] = array[j];
         array[j] = sub;
       }
     }
@@ -19,7 +20,7 @@ int main(void) {
 
   boobleSort(nums, len);
 
-  for(int i = 0; i < 10; i++){
+  for(int i = 0; i < len; i++) {
     printf("%d\n", nums[i]);
   }
 
