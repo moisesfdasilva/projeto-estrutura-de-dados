@@ -21,7 +21,6 @@ void merge(int array[], int len, int arrayOne[], int lenOne, int arrayTwo[], int
 }
 
 void mergeSort(int array[], int len) {
-
   if(len > 1) {
     int midIndex = len / 2;
     int lenTwo = len - midIndex;
