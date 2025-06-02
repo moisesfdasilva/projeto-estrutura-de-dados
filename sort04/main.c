@@ -43,7 +43,7 @@ void mergeSort(int array[], int len) {
 
 int main(void) {
   int nums[] = { 8, 5, 6, 9, 10, 1, 4, 3, 7, 2, 12, 11 };
-  int len = sizeof(nums)/sizeof(nums[0]);
+  int len = sizeof(nums) / sizeof(nums[0]);
 
   mergeSort(nums, len);
 
