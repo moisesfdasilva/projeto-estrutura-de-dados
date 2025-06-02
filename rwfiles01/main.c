@@ -62,8 +62,8 @@ int main(void) {
       default:
         printf(" Digite uma opção válida\n");
         break;
-      }
-    } while(option != 3);
+    }
+  } while(option != 3);
 
   system("PAUSE");
 
