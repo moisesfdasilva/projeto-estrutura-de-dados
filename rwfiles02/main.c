@@ -4,66 +4,58 @@
 #include <string.h>
 
 FILE *file;
-char fileName[] = "the-file.txt";
-char str[60];
 
 void writeText(void) {
-  printf("Digite a frase: ");
-  scanf(" %[^\n]", str);
+  char ch[15] = "Something";
+  int value[5] = { 1, 2, 3, 4, 5 };
 
-  file = fopen(fileName, "a");
+  file = fopen("binary01.bin", "wb");
 
-  fprintf(file, strcat(str, "\n"));
+  if(file == NULL) {
+		printf("\nErro: O arquivo binário.bin não foi criado!\n");
+    system("PAUSE");
+		exit(1);
+	}
+
+  fwrite(ch, sizeof(char), 15, file);
+	fwrite(value, sizeof(int), 5, file);
+
+  printf("\nFrase e valores gravados com sucesso!\n");
 
   fclose(file);
 }
 
 void readText(void) {
-  file = fopen(fileName, "r");
+  char ch[15];
+  int value[5], i;
 
-  if (file == NULL){
-    printf("Erro na abertura do arquivo!\n");
-    exit(1);
-  }
+  file = fopen("binary01.bin", "rb");
 
-  while(fgets(str, 50, file) != NULL){
-    printf("%s", str);
-  }
+  if(file == NULL) {
+		printf("\nErro: O arquivo binário.bin não foi aberto!\n");
+		exit(1);
+	}
 
-  fclose(file);
+  fread(ch, sizeof(ch), 1, file);
+
+  for(i = 0; i < 15; i++) {
+		printf("%c", ch[i]);
+	}
+
+  for(i = 0; i < 5; i++) {
+		printf("\n%d", value[i]);
+	}
+
+  printf("\nDados lidos com sucesso!\n");
 }
 
 int main(void) {
   setlocale(LC_ALL, "portuguese");
 
-  int option = 0;
-
   system("CLS");
 
-  do {
-    printf("Escolha a opção abaixo:\n");
-    printf("1 - Escrever no arquivo texto\n");
-    printf("2 - Ler conteúdo do arquivo texto\n");
-    printf("3 - Sair\n");
-    scanf("%d", &option);
-
-    switch(option) {
-      case 1:
-        writeText();
-        printf(" Escrita concluída!\n");
-        break;
-      case 2:
-        readText();
-        printf(" Leitura concluída!\n");
-        break;
-      case 3:
-        printf(" Saindo \n");
-        break;
-      default:
-        printf(" Digite uma opção válida \n");
-        break;
-      }
-    } while(option != 3);
+  writeText();
+  readText();
 
   system("PAUSE");
 
