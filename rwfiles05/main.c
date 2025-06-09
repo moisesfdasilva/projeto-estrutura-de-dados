@@ -6,7 +6,7 @@
 typedef struct {
   char codigo[50];
   char nome[50];
-  float precoUnintario;
+  float precoUnitario;
   int quantidadeVendida;
 } Produto;
 
@@ -18,9 +18,9 @@ int main(void) {
   system("CLS");
 
   if(file == NULL) {
-		printf("\nErro: O arquivo binário não foi aberto!\n");
+	  printf("\nErro: O arquivo binário não foi aberto!\n");
     system("PAUSE");
-		exit(1);
+    exit(1);
 	}
 
   Produto product;
@@ -28,7 +28,7 @@ int main(void) {
   while(fread(&product, sizeof(Produto), 1, file) == 1) {
     printf("\nCódigo: %s\n", product.codigo);
     printf("Nome: %s\n", product.nome);
-    printf("Preço unitário: %.2f\n", product.precoUnintario);
+    printf("Preço unitário: %.2f\n", product.precoUnitario);
     printf("Quantidade vendida: %d\n", product.quantidadeVendida);
   }
 

@@ -47,7 +47,7 @@ int listLen(Node *list) {
   return len;
 }
 
-Node* removeIndex(Node *list, int index) {
+void* removeIndex(Node *list, int index) {
   int len = listLen(list);
 
   if(len <= index) {
@@ -58,8 +58,12 @@ Node* removeIndex(Node *list, int index) {
   Node *tmp = list;
 
   if(index == 0) {
-    list = tmp->next;
-    free(tmp);
+    Node *nextNode = (len != 1) ? tmp->next : list;
+
+    tmp->next = nextNode->next;
+    tmp->num = nextNode->num;
+
+    free(nextNode);
   } else {
     for(int i = 1; i < index; i++) {
       tmp = tmp->next;
@@ -104,10 +108,27 @@ int main(void) {
 
   printDefault(list);
 
-  list = removeIndex(list, 5);
-  list = removeIndex(list, 6);
-  list = removeIndex(list, 1);
-  list = removeIndex(list, 0);
+  removeIndex(list, 5);
+  printDefault(list);
 
+  removeIndex(list, 6);
+  printDefault(list);
+
+  removeIndex(list, 1);
+  printDefault(list);
+
+  removeIndex(list, 0);
+  printDefault(list);
+
+  removeIndex(list, 0);
+  printDefault(list);
+
+  removeIndex(list, 0);
+  printDefault(list);
+
+  removeIndex(list, 0);
+  printDefault(list);
+
+  removeIndex(list, 0);
   printDefault(list);
 }
