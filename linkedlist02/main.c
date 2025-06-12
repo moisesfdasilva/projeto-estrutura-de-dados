@@ -78,6 +78,39 @@ void removeByIndex(Node *list, int index) {
   }
 }
 
+Node* searchByValue(Node *list, int value) {
+  Node *tmp = list;
+
+  while(tmp->num != value) {
+    tmp = tmp->next;
+  }
+
+  return tmp == NULL ? NULL : tmp;
+}
+
+int removeByValue(Node *list, int value) {
+  Node *tmp = list;
+  int count = 0;
+
+  while(tmp->next != NULL) {
+    if(tmp->num == value) {
+      Node *nextNode = tmp->next;
+
+      tmp->next = nextNode->next;
+      tmp->num = nextNode->num;
+
+      free(nextNode);
+
+      count++;
+    }
+
+    tmp = tmp->next;
+  }
+  printf("\n\n %d \n\n", tmp->num);
+
+  return count;
+}
+
 void printDefault(Node *list) {
   Node *tmp = list;
 
@@ -101,34 +134,45 @@ int main(void) {
   Node *node4 = insertAfter(node3, 10);
   Node *node5 = insertAfter(node4, 12);
   Node *node6 = insertAfter(node5, 14);
-  Node *node7 = insertAfter(node6, 16);
-  insertAfter(node7, 18);
+  Node *node7 = insertAfter(node6, 14);
+  Node *node8 = insertAfter(node7, 12);
+  Node *node9 = insertAfter(node8, 10);
+  Node *node10 = insertAfter(node9, 8);
+  Node *node11 = insertAfter(node10, 4);
+  insertAfter(node11, 2);
 
   printf("Tamanho da lista: %d\n", listLen(list));
 
   printDefault(list);
 
-  removeByIndex(list, 5);
-  printDefault(list);
+  // removeByIndex(list, 5);
+  // printDefault(list);
 
-  removeByIndex(list, 6);
-  printDefault(list);
+  // removeByIndex(list, 6);
+  // printDefault(list);
 
-  removeByIndex(list, 1);
-  printDefault(list);
+  // removeByIndex(list, 1);
+  // printDefault(list);
 
-  removeByIndex(list, 0);
-  printDefault(list);
+  // removeByIndex(list, 0);
+  // printDefault(list);
 
-  removeByIndex(list, 0);
-  printDefault(list);
+  // removeByIndex(list, 0);
+  // printDefault(list);
 
-  removeByIndex(list, 0);
-  printDefault(list);
+  // removeByIndex(list, 0);
+  // printDefault(list);
 
-  removeByIndex(list, 0);
-  printDefault(list);
+  // removeByIndex(list, 0);
+  // printDefault(list);
 
-  removeByIndex(list, 0);
+  // removeByIndex(list, 0);
+  // printDefault(list);   // Find a better way to show empty list.
+
+  // Node* nodeSearched = searchByValue(list, 2);
+  // printf("Node searched: %d \n", nodeSearched->num);  // Error: nodeSearched = NULL.
+
+  int valueRemoved = removeByValue(list, 14);
+  printf("Quantity removed: %d \n", valueRemoved);
   printDefault(list);
 }
