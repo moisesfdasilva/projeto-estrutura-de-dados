@@ -1,3 +1,10 @@
+// Sistema de vendas de loja de roupas.
+// NOME DOS ALUNOS INTEGRANTES:
+// a) Gustavo Pereira Fernandes Souto, matrícula 1240111496
+// b) João Victor da Silva Guimarães, matrícula 1240107989
+// c) Lucas Cabral Cândido Vasconcelos, matrícula 1230211250
+// d) Moisés Fernandes da Silva, matrícula 1240110677
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
